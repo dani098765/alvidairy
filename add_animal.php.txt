@@ -1,0 +1,24 @@
+<?php
+include 'db.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $name = $_POST['name'];
+    $type = $_POST['type'];
+    $age = $_POST['age'];
+    $health_status = $_POST['health_status'];
+    $weight = $_POST['weight'];
+
+    $sql = "INSERT INTO animals (name, type, age, health_status, weight) VALUES (?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ssisi", $name, $type, $age, $health_status, $weight);
+
+    if ($stmt->execute()) {
+        echo "Animal record added successfully!";
+    } else {
+        echo "Error: " . $stmt->error;
+    }
+
+    $stmt->close();
+    $conn->close();
+}
+?>

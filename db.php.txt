@@ -1,0 +1,15 @@
+<?php
+$host = 'sql106.infinityfree.com'; // Replace with your MySQL Hostname
+$username = 'if0_38193836'; // Replace with your Database Username
+$password = 'Shaniinfinity9'; // Replace with your Database Password
+$database = 'if0_38193836_users'; // Replace with your Database Name
+
+$conn = new mysqli($host, $username, $password, $database);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+} else {
+    echo "Database connected successfully!";
+}
+?>
